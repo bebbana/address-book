@@ -1,0 +1,8 @@
+# Config file for  CoreModule.
+
+parameters:
+
+# services setting then accessible thrue DI within whole application
+services:
+                - App\CoreModule\Model\UserManager
+                - App\CoreModule\Presenters\UserPresenter

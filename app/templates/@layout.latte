@@ -1,0 +1,47 @@
+
+
+<!DOCTYPE html>
+<html lang="cs-cz">
+        <head>
+                <meta charset="UTF-8" />
+                <title>{include title|striptags}</title>
+                <meta name="description" content="{include description|striptags}" />
+
+                {block css}
+                <link rel="stylesheet" href="{$basePath}/css/style.css" type="text/css"/>
+                {/block}
+
+                {block head}{/block}
+        </head>
+
+        <body>
+                <header>
+                        <h1>Adresář</h1>
+                </header>
+
+                {* Messages *}
+                <p n:foreach="$flashes as $flash" class="message">{$flash->message}</p>
+
+                <nav>
+                </nav>
+                <br clear="both" />
+
+                <article>
+                    <h1>Seznam kontaktů</h1>
+                        <section>
+                            {include content}
+                        </section>
+                </article>
+                
+                <footer>
+                    <p>@2017 Nadežda Olekšákova</p>
+                </footer>
+
+                {block scripts}
+                    <script type="text/javascript" src="{$basePath}/js/jquery/jquery-3.2.1.min.js"></script>
+                    <script type="text/javascript" src="{$basePath}/js/main.js"></script>
+                    <script type="text/javascript" src="{$basePath}/js/ajax/nette.ajax.js"></script>
+                    <script type="text/javascript" src="{$basePath}/js/tinymce.min.js"></script>
+                {/block}
+        </body>
+</html>

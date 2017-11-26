@@ -1,0 +1,87 @@
+body {
+	font-size: 15px;
+	line-height: 1.6;
+	color: #333;
+	background: white;
+        padding-left: 200px;
+}
+
+h1 {
+	color: #3484D2;
+}
+
+#ajax-spinner {
+	margin: 15px 0 0 15px;
+	padding: 13px;
+	background: white url('../images/spinner.gif') no-repeat 50% 50%;
+	font-size: 0;
+	z-index: 123456;
+	display: none;
+}
+
+div.flash {
+	color: black;
+	background: #FFF9D7;
+	border: 1px solid #E2C822;
+	padding: 1em;
+	margin: 1em 0;
+}
+
+form th, form td {
+	vertical-align: top;
+	font-weight: normal;
+}
+
+form th {
+	text-align: right;
+}
+
+form .required label {
+	font-weight: bold;
+}
+
+form .error {
+	color: #D00;
+	font-weight: bold;
+}
+
+article section table tbody, article section table thead{
+        text-align: left;
+}
+
+article section table thead th, article section table tbody td {
+        padding: 5px 15px;
+}
+
+article section table tbody td {
+        background-color: #E0E0E0;
+
+}
+
+ul {
+        margin: 0;
+        padding: 0;
+}
+ul li {
+        list-style-type: none;
+}
+
+a {
+        text-decoration: none;
+        color: #3484D2;
+}
+a:visited {
+        color: #3484D2;
+}
+a:hover {
+        color: grey;
+}
+
+a[href^="#error:"] {
+	background: red;
+	color: white;
+}
+
+.delete-contact a{
+        color: red;
+}
