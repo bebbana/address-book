@@ -89,10 +89,6 @@ class UserPresenter extends BasePresenter {
         
         if ($urlcounter != "editor") {
             $dbUser = $this->userManager->getUser($urlcounter);
-            
-            if (!$dbUser) {
-                $this->redirect('error');
-            }
             $this['editorForm']->setDefaults($dbUser);
         } else {
             $this['editorForm']->setDefaults([]);
