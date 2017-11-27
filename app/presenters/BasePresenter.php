@@ -10,10 +10,5 @@ use Nette\Application\UI\Presenter;
  */
 abstract class BasePresenter extends Presenter
 {
-    /** Load and render default list of user contacts
-     *
-     */
-    public function renderError() {
-        $this->template->error = "Stránka nenalezena!";
-    }
+    
 }

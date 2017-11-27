@@ -1,6 +1,5 @@
 1. Install apache/mysql/php 7.1
 2. Install Nette Framework https://nette.org/cs/download
-3.
 3. Unzip or clone project to local php scripts folder and open in IDE as nette project
 4. Create new mysql database `address-book` and new table users:
 

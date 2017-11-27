@@ -101,7 +101,7 @@ class UserManager extends BaseManager {
 
     /**
      * Delete user
-     * @param string #url URL user contact
+     * @param int #id  user contact id
      */
     public function removeUser($id) {
         $this->database->table(self::TABLE_NAME)->where(self::COLUMN_ID, $id)->delete();
