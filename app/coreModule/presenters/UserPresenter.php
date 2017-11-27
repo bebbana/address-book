@@ -74,11 +74,11 @@ class UserPresenter extends BasePresenter {
                 $this->userManager->updateUser($values);
             }
             $this->flashMessage('Uživatel byl úspěšně uložen!', 'success');
-            $this->redirect('default');
         } catch (UniqueConstraintViolationException $ex) {
             Debugger::log($ex);
             $this->flashMessage('Uživatel s touto URL už existuje!', 'danger');
         }
+        $this->redirect('default');
     }
 
     /**
