@@ -50,7 +50,7 @@ class UserPresenter extends BasePresenter {
                 ->addRule('App\CoreModule\Presenters\Validators\MyValidators::fullnameValidator', 'Celé jméno se skládá ze jména a přijmení oddělených mezerou. Používejte pouze velká a malá písmena. Diakritika je povolená, speciální znaky nikoliv.');
         $form->addText('telnumber', 'Telefonní číslo')->setRequired()->setDefaultValue('+420')
                 ->addCondition(Form::FILLED) // if telnumber is filled in
-                ->addRule('App\CoreModule\Presenters\Validators\MyValidators::telnumberValidator', 'Telefonni číslo musí být ve tvaru "XXXXXXXXX" .');
+                ->addRule('App\CoreModule\Presenters\Validators\MyValidators::telnumberValidator', 'Telefonni číslo musí být ve tvaru "+420XXXXXXXXX" .');
         $form->addText('email', 'E-mail')->setRequired()
                 ->addRule(Form::EMAIL, 'E-mailová adresa není platná');
         $form->addTextArea('memo', 'Poznámka'); // jakou validaci? nebo není třeba?
