@@ -2,7 +2,7 @@
 
 namespace App\CoreModule\Presenters;
 
-use App\CoreModule\Model\UserManager;
+use App\CoreModule\Model\ContactManager;
 use App\Presenters\BasePresenter;
 //use Nette\Application\BadRequestException;
 use Nette\Application\UI\Form;
@@ -11,36 +11,36 @@ use Nette\Utils\ArrayHash;
 use Tracy\Debugger;
 
 /**
- * processing of rendering of users
+ * processing of rendering of contacts
  * @package App\CoreModule\Presenters
  */
-class UserPresenter extends BasePresenter {
+class ContactPresenter extends BasePresenter {
 
     const //form validation constants
             FORM_MSG_REQUIRED = 'Tohle pole je povinné.';
 
     /**
-     * @var App\CoreModule\Model\UserManager */
-    public $userManager;
+     * @var App\CoreModule\Model\ContactManager */
+    public $contactManager;
 
     /**
      * Constructor 
-     * @param UserManager $userManager automaticaly injected class for users
+     * @param ContactManager $contactManager automaticaly injected class for users
      */
-    public function __construct(UserManager $userManager) {
+    public function __construct(ContactManager $contactManager) {
         parent::__construct();
-        $this->userManager = $userManager;
+        $this->contactManager = $contactManager;
     }
 
-    /** Load and render default list of user contacts
+    /** Load and render default list of contacts
      *
      */
     public function renderDefault() {
-        $this->template->users = $this->userManager->getUsers();
+        $this->template->contacts = $this->contactManager->getContacts();
     }
 
     /**
-     * return user edit form
+     * return contact edit form
      * @return Form edit form
      */
     protected function createComponentEditorForm() {
@@ -69,43 +69,43 @@ class UserPresenter extends BasePresenter {
     public function editorFormSucceeded($form, $values) {
         try {
             if (!$values['id']) {
-                $this->userManager->saveUser($values);
+                $this->contactManager->saveContact($values);
             } else {
-                $this->userManager->updateUser($values);
+                $this->contactManager->updateContact($values);
             }
-            $this->flashMessage('Uživatel byl úspěšně uložen!', 'success');
+            $this->flashMessage('Kontakt byl úspěšně uložen!', 'success');
         } catch (UniqueConstraintViolationException $ex) {
             Debugger::log($ex);
-            $this->flashMessage('Uživatel s touto URL už existuje!', 'danger');
+            $this->flashMessage('Kontakt s touto URL už existuje!', 'danger');
         }
         $this->redirect('default');
     }
 
     /**
-     * render editation of user by urlcounter
-     * @param array $urlcounter users url with counter
+     * render editation of contact by urlcounter
+     * @param array $urlcounter contacts url with counter
      */
     public function actionEditor($urlcounter) {
         
         if ($urlcounter != "editor") {
-            $dbUser = $this->userManager->getUser($urlcounter);
-            $this['editorForm']->setDefaults($dbUser);
+            $dbContact = $this->contactManager->getContact($urlcounter);
+            $this['editorForm']->setDefaults($dbContact);
         } else {
             $this['editorForm']->setDefaults([]);
         }
     }
 
     /**
-     * Delete user
+     * Delete contact
      * @param int $id
      */
     public function actionRemove($id) {
         try {
-            $this->userManager->removeUser($id);
-            $this->flashMessage('Uživatel byl úspěšně smazán!', 'success');
+            $this->contactManager->removeContact($id);
+            $this->flashMessage('Kontaktní záznam byl úspěšně smazán!', 'success');
         } catch (\Exception $ex) {
             Debugger::log($ex);
-            $this->flashMessage('Uživatele se nepodařilo smazat', 'danger');
+            $this->flashMessage('Kontaktní záznam se nepodařilo smazat', 'danger');
         }
         $this->redirect('default');
     }

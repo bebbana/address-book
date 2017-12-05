@@ -1,0 +1,24 @@
+{* Latte template *}
+{block content}
+    <table>
+                                    <thead>
+                                    <tr>
+                                        <th>Jméno a příjmení</th>
+                                        <th>Telefon</th>
+                                        <th>E-mail</th>
+                                        <th>Poznámka</th>
+                                    </thead>
+                                    <tr n:foreach="$contacts as $contact1">
+                                        <td><h3>{$contact1->fullname}</h3></td>
+                                        <td>{$contact1->telnumber}</td>
+                                        <td>{$contact1->email}</td>
+                                        <td>{$contact1->memo}</td>
+                                        <td class="edit-contact"><a href="{plink editor, $presenter->contactManager->createCompleteUrl($contact1)}">Upravit</a></td>
+                                        <td class="delete-contact"><a n:href=":Core:Contact:remove $contact1->id">Smazat</a></td>
+                                    </tr>
+                                </table> {* insert content to template*}
+    <ul><li><a n:href=":Core:Contact:editor">Vložit nový kontaktní záznam</a></li></ul>                            
+    {define title}Výpis Kontaktů.{/define}
+    {define description}Výpis všech kontaktů v adresáři.{/define}
+
+
