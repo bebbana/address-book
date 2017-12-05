@@ -16,7 +16,7 @@ class UserManager extends BaseManager {
 
     /** Constants for model manipulation */
     const
-            TABLE_NAME = 'users',
+            TABLE_NAME = 'user_contacts',
             COLUMN_ID = 'id',
             COLUMN_URL = 'url',
             COLUMN_COUNTER = 'counter',
