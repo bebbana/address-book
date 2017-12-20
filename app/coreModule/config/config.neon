@@ -6,3 +6,4 @@ parameters:
 services:
                 - App\CoreModule\Model\ContactManager
                 - App\CoreModule\Presenters\ContactPresenter
+                - App\CoreModule\Presenters\AdministrationPresenter

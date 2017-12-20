@@ -29,6 +29,7 @@ services:
         - App\Forms\FormFactory
         - App\Forms\SignInFormFactory
         - App\Forms\SignUpFormFactory
+        - App\Forms\UserForms
         router: App\RouterFactory::createRouter
 
 #include configs from modules

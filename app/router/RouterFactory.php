@@ -17,6 +17,8 @@ class RouterFactory {
      */
     public static function createRouter() {
         $router = new RouteList();
+        $router[] = new Route('login', 'Core:Administration:login');
+        $router[] = new Route('logout', 'Core:Administration:logout');
         $router[] = new Route('<action>/<id>', 'Core:Contact:remove');
         $router[] = new Route('<urlcounter>', 'Core:Contact:editor');
         $router[] = new Route('<action>/[<url>]', 'Core:Contact:default');

@@ -15,9 +15,11 @@
         </head>
 
         <body>
-                <header>
+                
                         <h1>Adresář</h1>
-                </header>
+                        <ul><li><td class="login"><a n:href="login">Přihlásit</a></td></ul></li>
+        <ul><li><td class="logout"><a n:if="$user->isLoggedIn()" href="logout">Odhlásit</a></td></ul></li>
+                
 
                 {* Messages *}
                 <p n:foreach="$flashes as $flash" class="message">{$flash->message}</p>
@@ -27,7 +29,6 @@
                 <br clear="both" />
 
                 <article>
-                    <h1>Seznam kontaktů</h1>
                         <section>
                             {include content}
                         </section>
