@@ -1,6 +1,6 @@
 {* Latte template *}
 {block content}
-<h1>Seznam kontaktů</h1>
+<h3>Seznam kontaktů</h3>
     <table>
                                     <thead>
                                     <tr>
@@ -14,11 +14,15 @@
                                         <td>{$contact1->telnumber}</td>
                                         <td>{$contact1->email}</td>
                                         <td>{$contact1->memo}</td>
-                                        <td class="edit-contact"><a href="{plink editor, $presenter->contactManager->createCompleteUrl($contact1)}">Upravit</a></td>
-                                        <td class="delete-contact"><a n:href=":Core:Contact:remove $contact1->id">Smazat</a></td>
+                                        {if $admin}
+                                            <td class="edit-contact"><a n href="{plink editor, $presenter->contactManager->createCompleteUrl($contact1)}">Upravit</a></td>
+                                            <td class="delete-contact"><a n:href=":Core:Contact:remove $contact1->id">Smazat</a></td>
+                                        {/if}
                                     </tr>
-                                </table> {* insert content to template*}
-    <ul><li><a n:href=":Core:Contact:editor">Vložit nový kontaktní záznam</a></li></ul>                            
+                                </table> 
+    {if $member || $admin}                                
+        <ul><li><a n:href=":Core:Contact:editor">Vložit nový kontaktní záznam</a></li></ul>
+    {/if}
     {define title}Výpis Kontaktů.{/define}
     {define description}Výpis všech kontaktů v adresáři.{/define}
 

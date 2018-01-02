@@ -3,7 +3,7 @@
 namespace App\CoreModule\Presenters;
 
 use App\CoreModule\Model\ContactManager;
-use App\Presenters\BasePresenter;
+use App\CoreModule\Presenters\BaseCorePresenter;
 //use Nette\Application\BadRequestException;
 use Nette\Application\UI\Form;
 use Nette\Database\UniqueConstraintViolationException;
@@ -14,7 +14,7 @@ use Tracy\Debugger;
  * processing of rendering of contacts
  * @package App\CoreModule\Presenters
  */
-class ContactPresenter extends BasePresenter {
+class ContactPresenter extends BaseCorePresenter {
 
     const //form validation constants
             FORM_MSG_REQUIRED = 'Tohle pole je povinné.';

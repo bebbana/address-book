@@ -25,12 +25,16 @@ database:
 
 
 services:
-        - App\Model\UserManager
-        - App\Forms\FormFactory
-        - App\Forms\SignInFormFactory
-        - App\Forms\SignUpFormFactory
         - App\Forms\UserForms
         router: App\RouterFactory::createRouter
+        authenticator: App\Model\UserManager # setting of logging to system
+        authorizator:
+            class: Nette\Security\Permission
+            setup:
+            - addResource('Error')
+            - allow('guest', 'Error') # every actions of Error resource
+            - allow('member', 'Error') # every actions of Error resource
+            - allow('admin') # every resources and its actions
 
 #include configs from modules
 includes:

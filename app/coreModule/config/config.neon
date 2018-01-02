@@ -1,9 +1,22 @@
 # Config file for  CoreModule.
-
 parameters:
 
 # services setting then accessible thrue DI within whole application
 services:
+
                 - App\CoreModule\Model\ContactManager
                 - App\CoreModule\Presenters\ContactPresenter
                 - App\CoreModule\Presenters\AdministrationPresenter
+                authorizator:
+                    class: Nette\Security\Permission
+                    setup:
+                    - addRole('guest')
+                    - addRole('member', 'guest')
+                    - addRole('admin', 'member')
+                    - addResource('Core:Administration')
+                    - addResource('Core:Contact')
+                    - allow('guest', 'Core:Contact') # every actions of Core:Contact resource
+                    - allow('guest', 'Core:Administration', 'login') # action login of Core:Administration resource
+                    - allow('guest', 'Core:Administration', 'register') # action register of Core:Administration resource
+                    - allow('member', 'Core:Administration', 'logout') # action logout of Core:Administration resurce
+                    - allow('admin') # every resources and its actions

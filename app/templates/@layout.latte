@@ -2,47 +2,49 @@
 
 <!DOCTYPE html>
 <html lang="cs-cz">
-        <head>
-                <meta charset="UTF-8" />
-                <title>{include title|striptags}</title>
-                <meta name="description" content="{include description|striptags}" />
+    <head>
+        <meta charset="UTF-8" />
+        <title>{include title|striptags}</title>
+        <meta name="description" content="{include description|striptags}" />
 
-                {block css}
-                <link rel="stylesheet" href="{$basePath}/css/style.css" type="text/css"/>
-                {/block}
+        {block css}
+        <link rel="stylesheet" href="{$basePath}/css/style.css" type="text/css"/>
+        {/block}
 
-                {block head}{/block}
-        </head>
+        {block head}{/block}
+    </head>
 
-        <body>
-                
-                        <h1>Adresář</h1>
-                        <ul><li><td class="login"><a n:href="login">Přihlásit</a></td></ul></li>
-        <ul><li><td class="logout"><a n:if="$user->isLoggedIn()" href="logout">Odhlásit</a></td></ul></li>
-                
+    <body>
 
-                {* Messages *}
-                <p n:foreach="$flashes as $flash" class="message">{$flash->message}</p>
+<nav>
+</nav>
+<br clear="both" />
 
-                <nav>
-                </nav>
-                <br clear="both" />
+<article>
+    {* Messages *}
+    <p n:foreach="$flashes as $flash" class="message">{$flash->message}</p>
+    <header>
+        <h1>Adresář</h1>
+        {if $user->isLoggedIn()}
+            <ul><li><td class="log"><a n:href=":logout">Odhlásit</a></td></ul></li>
+        {else}
+            <ul><li><td class="log"><a n:href=":login">Přihlásit</a></td></ul></li>
+        {/if}
+    </header>
+    <section>
+        {include content}
+    </section>
+</article>
 
-                <article>
-                        <section>
-                            {include content}
-                        </section>
-                </article>
-                
-                <footer>
-                    <p>@2017 Nadežda Olekšákova</p>
-                </footer>
+<footer>
+    <p>@2017 Nadežda Olekšákova</p>
+</footer>
 
-                {block scripts}
-                    <script type="text/javascript" src="{$basePath}/js/jquery/jquery-3.2.1.min.js"></script>
-                    <script type="text/javascript" src="{$basePath}/js/main.js"></script>
-                    <script type="text/javascript" src="{$basePath}/js/ajax/nette.ajax.js"></script>
-                    <script type="text/javascript" src="{$basePath}/js/tinymce.min.js"></script>
-                {/block}
-        </body>
+{block scripts}
+<script type="text/javascript" src="{$basePath}/js/jquery/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="{$basePath}/js/main.js"></script>
+<script type="text/javascript" src="{$basePath}/js/ajax/nette.ajax.js"></script>
+<script type="text/javascript" src="{$basePath}/js/tinymce.min.js"></script>
+{/block}
+</body>
 </html>

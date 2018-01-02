@@ -98,7 +98,7 @@ class UserForms extends Object {
      */
     public function createRegisterForm($instructions = null, Form $form = null) {
         $form = $this->createBasicForm($form);
-        $form->addPassword('password_repeat', 'Heslo znovu')
+        $form->addPassword('password_repeat', 'Heslo znovu')->setRequired()
                 ->addRule(Form::EQUAL, 'Hesla nesouhlasí.', $form['password']);
         $form->addText('y', 'Zadejte aktuální rok (antispam)')->setType('number')->setRequired()
                 ->addRule(Form::EQUAL, 'Špatně vyplněný antispam.', date("Y"));
